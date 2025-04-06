@@ -29,6 +29,25 @@ class LinkedList {
       this.length++;
     }
   }
+  // remove the node at
+  // an index
+  remove(index) {
+    if (index === 0) {
+      let newHead = this.head.next;
+      this.head = newHead;
+    }
+    else if (index === this.length - 1) {
+      let newTail = this.traverse(index - 1);
+      newTail.next = null;
+      this.tail = newTail;
+    }
+    else {
+      let prevNode = this.traverse(index - 1);
+      let nodeToBeRemoved = prevNode.next;
+      prevNode.next = nodeToBeRemoved.next;
+    }
+    this.length--;
+  }
   // traverse the linked list 
   // to a given index
   traverse(index) {
@@ -83,5 +102,13 @@ console.log(myLinkedList.display());
 myLinkedList.insert(2, 9);
 console.log(myLinkedList.display());
 myLinkedList.insert(4, 18);
+console.log(myLinkedList.display());
+myLinkedList.remove(0);
+console.log(myLinkedList.display());
+myLinkedList.remove(3);
+console.log(myLinkedList.display());
+myLinkedList.remove(3);
+console.log(myLinkedList.display());
+myLinkedList.remove(myLinkedList.length - 1);
 console.log(myLinkedList.display());
 console.log(myLinkedList);
