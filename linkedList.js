@@ -1,9 +1,7 @@
 class Node {
   constructor(value) {
-    this.node = {
-      value: value,
-      next: null
-    }
+      this.value = value,
+      this.next = null
   }
 }
 
@@ -34,4 +32,5 @@ class LinkedList {
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(15);
 myLinkedList.prepend(5);
+myLinkedList.append(20)
 console.log(myLinkedList);
