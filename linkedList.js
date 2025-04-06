@@ -11,6 +11,30 @@ class LinkedList {
     this.tail = this.head;
     this.length = 1;
   }
+  // insert value at an index
+  // indexes start from 0
+  insert(index, value) {
+    if (index === 0) {
+      this.prepend(value);
+    }
+    else if (index === this.length) {
+      this.append(value);
+    }
+    else {
+      let currentNode = this.head;
+      while (currentNode.next !== null) {
+        let prevNode = currentNode
+        currentNode = currentNode.next;
+        index = index - 1;
+        if (index === 0) {
+          const newNode = new Node(value);
+          prevNode.next = newNode;
+          newNode.next = currentNode;
+          this.length++;
+        }
+      }
+    }
+  }
   // add value at the tail
   append(value) {
     const newNode = new Node(value);
@@ -44,5 +68,13 @@ myLinkedList.append(15);
 myLinkedList.prepend(5);
 myLinkedList.append(20);
 myLinkedList.append(25);
+console.log(myLinkedList.display());
+myLinkedList.insert(0, 5);
+console.log(myLinkedList.display());
+myLinkedList.insert(myLinkedList.length, 50);
+console.log(myLinkedList.display());
+myLinkedList.insert(1, 6);
+console.log(myLinkedList.display());
+myLinkedList.insert(4, 18);
 console.log(myLinkedList.display());
 console.log(myLinkedList);
