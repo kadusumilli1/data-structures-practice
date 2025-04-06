@@ -21,19 +21,24 @@ class LinkedList {
       this.append(value);
     }
     else {
-      let currentNode = this.head;
-      while (currentNode.next !== null) {
-        let prevNode = currentNode
-        currentNode = currentNode.next;
-        index = index - 1;
-        if (index === 0) {
-          const newNode = new Node(value);
-          prevNode.next = newNode;
-          newNode.next = currentNode;
-          this.length++;
-        }
-      }
+      let prevNode = this.traverse(index - 1)
+      let currentNode = prevNode.next;
+      const newNode = new Node(value);
+      prevNode.next = newNode;
+      newNode.next = currentNode;
+      this.length++;
     }
+  }
+  // traverse the linked list 
+  // to a given index
+  traverse(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
   }
   // add value at the tail
   append(value) {
@@ -74,6 +79,8 @@ console.log(myLinkedList.display());
 myLinkedList.insert(myLinkedList.length, 50);
 console.log(myLinkedList.display());
 myLinkedList.insert(1, 6);
+console.log(myLinkedList.display());
+myLinkedList.insert(2, 9);
 console.log(myLinkedList.display());
 myLinkedList.insert(4, 18);
 console.log(myLinkedList.display());
