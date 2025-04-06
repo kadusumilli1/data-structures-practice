@@ -22,26 +22,27 @@ class LinkedList {
   // add value at the head
   prepend(value) {
     const newNode = new Node(value);
-    newNode.next = this.head
-    this.head = newNode
+    newNode.next = this.head;
+    this.head = newNode;
     this.length++;
     return this;
   }
   // traverse and print all values
   display() {
-    let currentNode = this.head
-    while (currentNode.next != null) {
-      console.log(currentNode.value)
-      currentNode = currentNode.next
+    const array = []
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      array.push(currentNode.value);
+      currentNode = currentNode.next;
     }
-    console.log(currentNode.value)
+    return array;
   }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(15);
 myLinkedList.prepend(5);
-myLinkedList.append(20)
-myLinkedList.append(25)
-myLinkedList.display();
+myLinkedList.append(20);
+myLinkedList.append(25);
+console.log(myLinkedList.display());
 console.log(myLinkedList);
