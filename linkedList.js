@@ -1,7 +1,7 @@
 class Node {
   constructor(value) {
-      this.value = value,
-      this.next = null
+    this.value = value,
+    this.next = null
   }
 }
 
@@ -27,10 +27,21 @@ class LinkedList {
     this.length++;
     return this;
   }
+  // traverse and print all values
+  display() {
+    let currentNode = this.head
+    while (currentNode.next != null) {
+      console.log(currentNode.value)
+      currentNode = currentNode.next
+    }
+    console.log(currentNode.value)
+  }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(15);
 myLinkedList.prepend(5);
 myLinkedList.append(20)
+myLinkedList.append(25)
+myLinkedList.display();
 console.log(myLinkedList);
