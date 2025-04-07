@@ -11,8 +11,13 @@ class Stack {
         this.bottom = null;
         this.length = 0;
     }
-
+    // see top element on the stack
     peek() {
+        if (this.length > 0) {
+            return this.top;
+        } else {
+            return "stack is empty"
+        }
     }
     // push element onto the stack
     push(value) {
@@ -33,8 +38,10 @@ class Stack {
 }
 
 let myStack = new Stack();
+console.log(myStack.peek());
 myStack.push(5);
 console.log(myStack);
 myStack.push(10);
 console.log(myStack);
-
+myStack.push(15);
+console.log(myStack.peek());
