@@ -1,8 +1,8 @@
 class Node {
     constructor(value) {
-        this.prev = null,
-            this.value = value,
-            this.next = null
+        this.prev = null;
+        this.value = value;
+        this.next = null;
     }
 }
 
@@ -22,7 +22,7 @@ class DoublyLinkedList {
             this.append(value);
         }
         else {
-            let prevNode = this.traverse(index - 1)
+            let prevNode = this.traverse(index - 1);
             let currentNode = prevNode.next;
             const newNode = new Node(value);
             prevNode.next = newNode;
@@ -31,6 +31,7 @@ class DoublyLinkedList {
             currentNode.prev = newNode;
             this.length++;
         }
+        return this;
     }
     // remove the node at
     // an index
@@ -52,6 +53,7 @@ class DoublyLinkedList {
             nodeToBeRemoved.next.prev = nodeToBeRemoved.prev;
         }
         this.length--;
+        return this;
     }
     // traverse the linked list 
     // to a given index
