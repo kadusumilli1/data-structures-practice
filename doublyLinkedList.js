@@ -34,23 +34,25 @@ class DoublyLinkedList {
     }
     // remove the node at
     // an index
-    // remove(index) {
-    //     if (index === 0) {
-    //         let newHead = this.head.next;
-    //         this.head = newHead;
-    //     }
-    //     else if (index === this.length - 1) {
-    //         let newTail = this.traverse(index - 1);
-    //         newTail.next = null;
-    //         this.tail = newTail;
-    //     }
-    //     else {
-    //         let prevNode = this.traverse(index - 1);
-    //         let nodeToBeRemoved = prevNode.next;
-    //         prevNode.next = nodeToBeRemoved.next;
-    //     }
-    //     this.length--;
-    // }
+    remove(index) {
+        if (index === 0) {
+            let newHead = this.head.next;
+            newHead.prev = null;
+            this.head = newHead;
+        }
+        else if (index === this.length - 1) {
+            let newTail = this.traverse(index - 1);
+            newTail.next = null;
+            this.tail = newTail;
+        }
+        else {
+            let prevNode = this.traverse(index - 1);
+            let nodeToBeRemoved = prevNode.next;
+            prevNode.next = nodeToBeRemoved.next;
+            nodeToBeRemoved.next.prev = nodeToBeRemoved.prev;
+        }
+        this.length--;
+    }
     // traverse the linked list 
     // to a given index
     traverse(index) {
@@ -104,16 +106,16 @@ myDoublyLinkedList.insert(myDoublyLinkedList.length, 50);
 console.log(myDoublyLinkedList.display());
 myDoublyLinkedList.insert(1, 6);
 console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.insert(2, 9);
-// console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.insert(4, 18);
-// console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.remove(0);
-// console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.remove(3);
-// console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.remove(3);
-// console.log(myDoublyLinkedList.display());
-// myDoublyLinkedList.remove(myDoublyLinkedList.length - 1);
-// console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.insert(2, 9);
+console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.insert(4, 18);
+console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.remove(0);
+console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.remove(3);
+console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.remove(3);
+console.log(myDoublyLinkedList.display());
+myDoublyLinkedList.remove(myDoublyLinkedList.length - 1);
+console.log(myDoublyLinkedList.display());
 console.log(myDoublyLinkedList);
