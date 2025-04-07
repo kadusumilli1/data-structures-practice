@@ -16,6 +16,14 @@ class Stack {
     }
     // push element onto the stack
     push(value) {
+        if (this.length === 0) {
+            this.bottom = value;
+            this.top = this.bottom;
+        } else {
+            this.top = value;
+        }
+        this.length++;
+        return this;
     }
 
     pop() {
