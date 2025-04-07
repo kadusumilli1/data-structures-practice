@@ -16,7 +16,7 @@ class Stack {
         if (this.length > 0) {
             return this.top.value;
         } else {
-            return "stack is empty"
+            return "stack is empty: " + this.top
         }
     }
     // push element onto the stack
@@ -43,7 +43,7 @@ class Stack {
         } else if (this.length === 1) {
             this.bottom = this.top = null;
         } else {
-            return "stack is empty; nothing to pop"
+            return "stack is empty: " + this.top
         }
         this.length--;
         return this;
