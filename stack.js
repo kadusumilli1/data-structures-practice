@@ -14,7 +14,7 @@ class Stack {
     // see top element on the stack
     peek() {
         if (this.length > 0) {
-            return this.top;
+            return this.top.value;
         } else {
             return "stack is empty"
         }
@@ -22,15 +22,21 @@ class Stack {
     // push element onto the stack
     push(value) {
         if (this.length === 0) {
-            this.bottom = value;
+            this.bottom = new Node(value);
             this.top = this.bottom;
         } else {
-            this.top = value;
+            const newNode = new Node(value);
+            if (this.length === 1) {
+                newNode.next = this.bottom;
+            } else {
+                newNode.next = this.top;
+            }
+            this.top = newNode;
         }
         this.length++;
         return this;
     }
-
+    // remove top element from the stack
     pop() {
     }
 
@@ -45,3 +51,4 @@ myStack.push(10);
 console.log(myStack);
 myStack.push(15);
 console.log(myStack.peek());
+console.log(myStack);
