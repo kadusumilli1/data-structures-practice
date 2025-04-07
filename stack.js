@@ -38,6 +38,15 @@ class Stack {
     }
     // remove top element from the stack
     pop() {
+        if (this.length > 1) {
+            this.top = this.top.next;
+        } else if (this.length === 1) {
+            this.bottom = this.top = null;
+        } else {
+            return "stack is empty; nothing to pop"
+        }
+        this.length--;
+        return this;
     }
 
     //isEmpty
@@ -45,6 +54,7 @@ class Stack {
 
 let myStack = new Stack();
 console.log(myStack.peek());
+console.log(myStack.pop());
 myStack.push(5);
 console.log(myStack);
 myStack.push(10);
@@ -52,3 +62,6 @@ console.log(myStack);
 myStack.push(15);
 console.log(myStack.peek());
 console.log(myStack);
+console.log(myStack.pop())
+console.log(myStack.pop())
+console.log(myStack.pop())
