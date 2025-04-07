@@ -48,6 +48,20 @@ class LinkedList {
     }
     this.length--;
   }
+  // reverse the linked list
+  reverse() {
+    let prevNode = null;
+    let currentNode = this.head;
+    this.tail = this.head // to have correct tail after reversing
+    while (currentNode !== null) {
+      let nextNode = currentNode.next; // store nextNode
+      currentNode.next = prevNode; // reverse the pointer
+      prevNode = currentNode; // move prevNode forward
+      currentNode = nextNode; // move currentNode forward
+    }
+    this.head = prevNode;
+    return prevNode;
+  }
   // traverse the linked list 
   // to a given index
   traverse(index) {
@@ -110,5 +124,8 @@ console.log(myLinkedList.display());
 myLinkedList.remove(3);
 console.log(myLinkedList.display());
 myLinkedList.remove(myLinkedList.length - 1);
+console.log(myLinkedList.display());
+console.log(myLinkedList);
+myLinkedList.reverse();
 console.log(myLinkedList.display());
 console.log(myLinkedList);
