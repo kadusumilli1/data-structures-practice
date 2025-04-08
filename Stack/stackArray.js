@@ -9,6 +9,8 @@ class Stack {
     peek() {
         if (this.stackArray.length === 0) {
             return "stack is empty: " + this.top;
+        } else {
+            return this.stackArray.at(-1);
         }
     }
     // push element onto the stack
@@ -46,15 +48,16 @@ class Stack {
     }
 }
 
-
 let myStack = new Stack();
 console.log(myStack.peek());
 console.log(myStack.pop());
 myStack.push(5);
 console.log(myStack);
 myStack.push(10);
+console.log(myStack.peek());
 console.log(myStack);
 myStack.push(15);
+console.log(myStack.peek());
 console.log(myStack);
 console.log(myStack.pop());
 console.log(myStack);
@@ -63,4 +66,3 @@ console.log(myStack);
 console.log(myStack.pop());
 console.log(myStack);
 console.log(myStack.pop());
-console.log(myStack);
