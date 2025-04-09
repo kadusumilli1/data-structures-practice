@@ -16,33 +16,26 @@ class BinarySearchTree {
         const newNode = new Node(value);
         if (this.root === null) {
             this.root = newNode;
-        } else if (value > this.root.value) {
-            if (this.root.right === null) {
-                let rootNode = this.root;
-                rootNode.right = newNode;
-                newNode = this.root
+        } else {
+            this._insertNode(this.root, newNode)
+        }
+        return this;
+    }
+
+    _insertNode(current, newNode) {
+        if (newNode.value < current.value) {
+            if (current.left === null) {
+                current.left = newNode;
             }
             else {
-                const prevRootNode = this.root;
-                this.root = this.root.right;
-                // update root and insert 
-                this.insert(value);
-                // always go back to the original root
-                this.root = prevRootNode;
+                this._insertNode(current.left, newNode)
             }
         } else {
-            if (this.root.left === null) {
-                let rootNode = this.root;
-                rootNode.left = newNode;
-                newNode = this.root;
+            if (current.right === null) {
+                current.right = newNode;
             }
             else {
-                const prevRootNode = this.root;
-                this.root = this.root.left;
-                // update root and insert 
-                this.insert(value);
-                // always go back to the original root
-                this.root = prevRootNode;
+                this._insertNode(current.right, newNode)
             }
         }
     }
