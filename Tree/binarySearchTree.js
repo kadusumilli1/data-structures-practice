@@ -41,7 +41,26 @@ class BinarySearchTree {
             }
         }
     }
-
+    // search for a value in the tree
+    lookup(value) {
+        if (this.root === null) {
+            return "Not Found!";
+        } else {
+            let currentNode = this.root;
+            while (currentNode) {
+                // search left side of root
+                if (value < currentNode.value) {
+                    currentNode = currentNode.left;
+                } else if (value > currentNode.value) {
+                    // search right side of root
+                    currentNode = currentNode.right;
+                } else if (currentNode.value === value) {
+                    return currentNode.value + " Found!";
+                }
+            }
+            return "Not Found!"
+        }
+    }
     // insert node in to the tree - recursive
     // T.C. - O(n) and S.C. - O(n) vs O(1) in iterative
     // insert(value) {
@@ -81,9 +100,12 @@ tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
+console.log(tree.lookup(2));
+console.log(tree.lookup(9));
+console.log(tree.lookup(15));
+console.log(tree.lookup(170));
 // tree.remove(170);
 console.log(JSON.stringify(traverse(tree.root)));
-// console.log(tree.lookup(20));
 
 function traverse(node) {
     const tree = { value: node.value };
